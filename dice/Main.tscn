@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cx63poi16viq2"]
+[gd_scene load_steps=4 format=3 uid="uid://cx63poi16viq2"]
 
 [ext_resource type="Script" path="res://dice/Main.cs" id="1_mhsb1"]
 [ext_resource type="Script" path="res://dice/PhaseSwitch.cs" id="2_m4luf"]
+[ext_resource type="Script" path="res://dice/DiceRoller.cs" id="3_wkxgs"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_mhsb1")
@@ -9,6 +10,9 @@ script = ExtResource("1_mhsb1")
 [node name="PhaseSwitch" type="Node" parent="."]
 script = ExtResource("2_m4luf")
 _phases = PackedStringArray("start", "ready", "roll")
+
+[node name="DiceRoller" type="Node" parent="."]
+script = ExtResource("3_wkxgs")
 
 [node name="TopView" type="CenterContainer" parent="."]
 offset_right = 1922.0
@@ -78,12 +82,10 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "1"
-placeholder_text = "42"
 alignment = 1
 virtual_keyboard_type = 3
 select_all_on_focus = true
 caret_blink = true
-text_direction = 1
 
 [node name="IncVariantsButton" type="Button" parent="BottomView/HBox/CenterVBox/VariantsHBox"]
 custom_minimum_size = Vector2(56, 56)
@@ -111,7 +113,6 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "2"
-placeholder_text = "42"
 alignment = 1
 virtual_keyboard_type = 3
 select_all_on_focus = true
@@ -152,7 +153,6 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "1"
-placeholder_text = "42"
 alignment = 1
 virtual_keyboard_type = 3
 select_all_on_focus = true
@@ -218,4 +218,7 @@ grow_vertical = 2
 
 [connection signal="EnterPhase" from="PhaseSwitch" to="." method="OnEnterPhase"]
 [connection signal="QuitPhase" from="PhaseSwitch" to="." method="OnQuitPhase"]
+[connection signal="focus_exited" from="BottomView/HBox/CenterVBox/VariantsHBox/VariantsLine" to="." method="OnVariantsLineFocusExited"]
+[connection signal="text_changed" from="BottomView/HBox/CenterVBox/VariantsHBox/VariantsLine" to="." method="OnVariantsLineTextChanged"]
+[connection signal="text_submitted" from="BottomView/HBox/CenterVBox/VariantsHBox/VariantsLine" to="." method="OnVariantsLineTextSubmitted"]
 [connection signal="pressed" from="BottomView/HBox/QuitButton" to="." method="OnQuitButtonPressed"]
