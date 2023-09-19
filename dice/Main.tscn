@@ -1,0 +1,221 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx63poi16viq2"]
+
+[ext_resource type="Script" path="res://dice/Main.cs" id="1_mhsb1"]
+[ext_resource type="Script" path="res://dice/PhaseSwitch.cs" id="2_m4luf"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_mhsb1")
+
+[node name="PhaseSwitch" type="Node" parent="."]
+script = ExtResource("2_m4luf")
+_phases = PackedStringArray("start", "ready", "roll")
+
+[node name="TopView" type="CenterContainer" parent="."]
+offset_right = 1922.0
+offset_bottom = 150.0
+
+[node name="VBox" type="VBoxContainer" parent="TopView"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="TopView/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "Decision Dice"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Subtitle" type="Label" parent="TopView/VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "Set up a number of variants and roll the dice for them"
+horizontal_alignment = 1
+
+[node name="BottomView" type="CenterContainer" parent="."]
+offset_top = 901.0
+offset_right = 1922.0
+offset_bottom = 1079.0
+
+[node name="HBox" type="HBoxContainer" parent="BottomView"]
+custom_minimum_size = Vector2(1920, 0)
+layout_mode = 2
+
+[node name="RollButton" type="Button" parent="BottomView/HBox"]
+custom_minimum_size = Vector2(200, 176)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "ROLL"
+
+[node name="VSeparator" type="VSeparator" parent="BottomView/HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="LeftVBox" type="VBoxContainer" parent="BottomView/HBox"]
+layout_mode = 2
+
+[node name="CenterVBox" type="VBoxContainer" parent="BottomView/HBox"]
+layout_mode = 2
+
+[node name="VariantsHBox" type="HBoxContainer" parent="BottomView/HBox/CenterVBox"]
+layout_mode = 2
+
+[node name="VariantsLabel" type="Label" parent="BottomView/HBox/CenterVBox/VariantsHBox"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Number of variants: "
+
+[node name="DecVariantsButton" type="Button" parent="BottomView/HBox/CenterVBox/VariantsHBox"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<<"
+
+[node name="VariantsLine" type="LineEdit" parent="BottomView/HBox/CenterVBox/VariantsHBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+placeholder_text = "42"
+alignment = 1
+virtual_keyboard_type = 3
+select_all_on_focus = true
+caret_blink = true
+text_direction = 1
+
+[node name="IncVariantsButton" type="Button" parent="BottomView/HBox/CenterVBox/VariantsHBox"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ">>"
+
+[node name="FacesHBox" type="HBoxContainer" parent="BottomView/HBox/CenterVBox"]
+layout_mode = 2
+
+[node name="FacesLabel" type="Label" parent="BottomView/HBox/CenterVBox/FacesHBox"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Number of dice faces: "
+
+[node name="DecFacesButton" type="Button" parent="BottomView/HBox/CenterVBox/FacesHBox"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<<"
+
+[node name="FacesLine" type="LineEdit" parent="BottomView/HBox/CenterVBox/FacesHBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "2"
+placeholder_text = "42"
+alignment = 1
+virtual_keyboard_type = 3
+select_all_on_focus = true
+caret_blink = true
+text_direction = 1
+
+[node name="IncFacesButton" type="Button" parent="BottomView/HBox/CenterVBox/FacesHBox"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ">>"
+
+[node name="FacesLockCheckbox" type="CheckButton" parent="BottomView/HBox/CenterVBox/FacesHBox"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "  Lock"
+icon_alignment = 1
+expand_icon = true
+
+[node name="DicesHBox" type="HBoxContainer" parent="BottomView/HBox/CenterVBox"]
+layout_mode = 2
+
+[node name="DicesLabel" type="Label" parent="BottomView/HBox/CenterVBox/DicesHBox"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Number of dices: "
+
+[node name="DecDicesButton" type="Button" parent="BottomView/HBox/CenterVBox/DicesHBox"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "<<"
+
+[node name="DicesLine" type="LineEdit" parent="BottomView/HBox/CenterVBox/DicesHBox"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "1"
+placeholder_text = "42"
+alignment = 1
+virtual_keyboard_type = 3
+select_all_on_focus = true
+caret_blink = true
+text_direction = 1
+
+[node name="IncDicesButton" type="Button" parent="BottomView/HBox/CenterVBox/DicesHBox"]
+custom_minimum_size = Vector2(56, 56)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = ">>"
+
+[node name="DicesLockCheckbox" type="CheckButton" parent="BottomView/HBox/CenterVBox/DicesHBox"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "  Lock"
+icon_alignment = 1
+expand_icon = true
+
+[node name="VSeparator4" type="VSeparator" parent="BottomView/HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="RightVBox" type="VBoxContainer" parent="BottomView/HBox"]
+layout_mode = 2
+
+[node name="ResetToDefButton" type="Button" parent="BottomView/HBox/RightVBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reset to defaults"
+
+[node name="ResetToMinButton" type="Button" parent="BottomView/HBox/RightVBox"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Reset to minimal
+"
+
+[node name="VSeparator2" type="VSeparator" parent="BottomView/HBox"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="QuitButton" type="Button" parent="BottomView/HBox"]
+custom_minimum_size = Vector2(200, 176)
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "QUIT"
+
+[node name="MainView" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 170.0
+offset_bottom = -176.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="EnterPhase" from="PhaseSwitch" to="." method="OnEnterPhase"]
+[connection signal="QuitPhase" from="PhaseSwitch" to="." method="OnQuitPhase"]
+[connection signal="pressed" from="BottomView/HBox/QuitButton" to="." method="OnQuitButtonPressed"]
